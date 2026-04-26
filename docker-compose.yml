@@ -1,0 +1,60 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: kshorts-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./data/models:/root/.ollama
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:11434/api/tags"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  api:
+    build: ./backend
+    container_name: kshorts-api
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+      DATA_DIR: /data
+      DATABASE_URL: sqlite:////data/k-shorts.db
+      # client_secret.json을 backend/ 안에 배치 후 마운트됨
+    volumes:
+      - ./data:/data
+      - ./backend:/app
+    depends_on:
+      ollama:
+        condition: service_healthy
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  web:
+    build: ./frontend
+    container_name: kshorts-web
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE: http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - api

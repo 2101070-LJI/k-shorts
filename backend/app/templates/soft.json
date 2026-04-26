@@ -1,0 +1,28 @@
+{
+  "id": "soft",
+  "name": "Soft",
+  "description": "감성 — 블러 배경 + 명조체",
+  "layout": {
+    "type": "blur_bg",
+    "blur_sigma": 25,
+    "fg_scale": 1.0
+  },
+  "caption": {
+    "font": "Batang",
+    "size": 58,
+    "color": "#FFFFFF",
+    "shadow": {
+      "offset": [2, 2],
+      "blur": 8,
+      "opacity": 0.5
+    },
+    "position": {
+      "anchor": "bottom",
+      "margin_y": 160
+    }
+  },
+  "animation": {
+    "type": "fade",
+    "duration": 0.4
+  }
+}

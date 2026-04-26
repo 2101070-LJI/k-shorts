@@ -1,0 +1,23 @@
+{
+  "id": "split",
+  "name": "Split",
+  "description": "예능 감성 — 거울 반전 블러 배경",
+  "layout": {
+    "type": "mirror_bg",
+    "blur_sigma": 15
+  },
+  "caption": {
+    "font": "Malgun Gothic",
+    "size": 55,
+    "color": "#FFFFFF",
+    "stroke": "#000000",
+    "stroke_width": 3,
+    "position": {
+      "anchor": "center",
+      "margin_y": 0
+    }
+  },
+  "animation": {
+    "type": "none"
+  }
+}

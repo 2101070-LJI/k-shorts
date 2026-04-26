@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kshorts-backend"
+version = "0.1.0"
+description = "Korean variety shorts auto-editor backend"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.27",
+  "pydantic>=2.6",
+  "pydantic-settings>=2.2",
+  "sqlalchemy>=2.0",
+  "alembic>=1.13",
+  "python-multipart>=0.0.9",
+  "websockets>=12",
+  "apscheduler>=3.10",
+
+  # Video / audio
+  "yt-dlp>=2026.1.1",
+  "moviepy>=1.0.3",
+  "ffmpeg-python>=0.2",
+  "librosa>=0.10",
+  "soundfile>=0.12",
+  "scipy>=1.12",
+  "numpy>=1.26",
+
+  # ML / ASR
+  "faster-whisper>=1.0",
+  "mediapipe>=0.10",
+  "transformers>=4.40",
+  "panns-inference>=0.1.1",
+
+  # LLM client
+  "ollama>=0.1.40",
+  "httpx>=0.27",
+
+  # YouTube
+  "google-api-python-client>=2.100",
+  "google-auth-oauthlib>=1.2",
+  "google-auth-httplib2>=0.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "pytest-asyncio>=0.23",
+  "ruff>=0.4",
+  "mypy>=1.9",
+]
+
+# Torch is installed separately with a CUDA-specific index. See README.
+# pip install torch==2.3.* --index-url https://download.pytorch.org/whl/cu121
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

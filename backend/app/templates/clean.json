@@ -1,0 +1,27 @@
+{
+  "id": "clean",
+  "name": "Clean",
+  "description": "음소거 대응 보조 자막, 원본 방해 최소",
+  "layout": {
+    "type": "black_bars"
+  },
+  "caption": {
+    "font": "Malgun Gothic",
+    "size": 62,
+    "color": "#FFFFFF",
+    "stroke": "#000000",
+    "stroke_width": 3,
+    "position": {
+      "anchor": "bottom",
+      "margin_y": 180
+    },
+    "background": {
+      "color": "#000000",
+      "opacity": 0.4,
+      "padding": 12
+    }
+  },
+  "animation": {
+    "type": "none"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "bold",
+  "name": "Bold",
+  "description": "두꺼운 자막 — 블러 배경 + 자막 공간 확보",
+  "layout": {
+    "type": "blur_bg",
+    "blur_sigma": 30,
+    "fg_scale": 1.0
+  },
+  "caption": {
+    "font": "Malgun Gothic Bold",
+    "size": 75,
+    "color": "#FFFFFF",
+    "stroke": "#000000",
+    "stroke_width": 5,
+    "position": {
+      "anchor": "bottom",
+      "margin_y": 200
+    }
+  },
+  "animation": {
+    "type": "pop",
+    "duration": 0.1,
+    "scale_from": 1.15
+  }
+}
