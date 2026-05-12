@@ -5,11 +5,23 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
+import shutil
+
 import imageio_ffmpeg
 
 from app.config import settings
 
-_FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
+
+def _resolve_ffmpeg() -> str:
+    # Prefer system ffmpeg (named 'ffmpeg') so yt-dlp can locate it by directory.
+    # imageio_ffmpeg bundles a non-standard filename that yt-dlp cannot find.
+    sys = shutil.which("ffmpeg")
+    if sys:
+        return sys
+    return imageio_ffmpeg.get_ffmpeg_exe()
+
+
+_FFMPEG = _resolve_ffmpeg()
 
 _VIDEO_ID_RE = re.compile(r"(?:v=|youtu\.be/|shorts/)([A-Za-z0-9_-]{11})")
 

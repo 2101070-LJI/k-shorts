@@ -52,3 +52,6 @@ backend/**/_asr_chunks/
 *.mp4
 *.mp3
 *.asr_cache.json
+
+# Demo clips are tracked
+!demo/*.mp4

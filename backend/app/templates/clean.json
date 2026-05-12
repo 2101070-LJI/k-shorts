@@ -3,7 +3,8 @@
   "name": "Clean",
   "description": "음소거 대응 보조 자막, 원본 방해 최소",
   "layout": {
-    "type": "black_bars"
+    "type": "face_track",
+    "smoothing": {"alpha": 0.85, "method": "ema"}
   },
   "caption": {
     "font": "Malgun Gothic",
