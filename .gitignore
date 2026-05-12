@@ -55,3 +55,4 @@ backend/**/_asr_chunks/
 
 # Demo clips are tracked
 !demo/*.mp4
+*.log
